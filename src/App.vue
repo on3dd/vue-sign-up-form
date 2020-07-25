@@ -1,16 +1,48 @@
 <template>
   <div id="app">
-    <BaseForm />
+    <BaseForm :options="options" @next="handleFormNext">
+      <FormStepOne v-show="options.steps.current === 0" />
+      <FormStepTwo v-show="options.steps.current === 1" />
+    </BaseForm>
   </div>
 </template>
 
 <script>
 	import BaseForm from '@/components/BaseUI/BaseForm';
+	import FormStepOne from '@/components/FormStepOne';
+	import FormStepTwo from '@/components/FormStepTwo';
 
 	export default {
 		name: 'App',
 		components: {
 			BaseForm,
+			FormStepOne,
+			FormStepTwo,
+		},
+
+		data: () => ({
+			options: {
+				steps: {
+					items: ['Основное', 'Подробности', 'Адрес', 'Паспорт'],
+					current: 0,
+				},
+				heading: {
+					title: 'Создание клиента',
+					description: 'Заполните данную форму, чтобы создать нового клиента!',
+				},
+			},
+		}),
+
+		methods: {
+			handleFormNext() {
+				this.options = {
+					heading: this.options.heading,
+					steps: {
+						items: this.options.steps.items,
+						current: this.options.steps.current + 1,
+					},
+				};
+			},
 		},
 	};
 </script>
@@ -19,8 +51,8 @@
 	@import './scss/main.scss';
 
 	#app {
-    display: flex;
-    padding: 15px;
+		display: flex;
+		padding: 15px;
 		justify-content: center;
 		align-items: center;
 		min-height: inherit;

@@ -3,6 +3,7 @@
   --secondary-color: hsl(145, 63%, 42%);
   --font-color: hsl(0, 0%, 21%);
   --font-color-secondary: hsl(0, 0%, 48%);
+  --font-color-alternative: hsl(0, 0%, 96%);
   --bg-color: hsl(0, 0%, 100%);
   --bg-color-secondary: hsl(0, 0%, 90%);
   --link-bg-color-hover: hsl(0, 0%, 98%);
@@ -12,6 +13,9 @@
   --heading-color: hsl(0, 0%, 4%);
   --sub-heading-color: hsl(0, 0%, 29%);
   --border-color: hsl(0, 0%, 75%);
+  --steps-color: hsl(282, 44%, 47%);
+  --steps-bg-color: hsl(0, 0%, 65%);
+  --body-color: hsl(145, 63%, 42%);
 }
 
 [data-theme='dark'] {
@@ -19,6 +23,7 @@
   --secondary-color: hsl(242, 79%, 82%);
   --font-color: hsl(0, 0%, 96%);
   --font-color-secondary: hsl(0, 0%, 69%);
+  --font-color-alternative: hsl(0, 0%, 21%);
   --bg-color: hsl(240, 25%, 22%);
   --bg-color-secondary: hsl(240, 25%, 12%);
   --link-bg-color-hover: hsl(240, 25%, 14%);
@@ -28,4 +33,5 @@
   --heading-color: hsl(0, 0%, 100%);
   --sub-heading-color: hsl(0, 0%, 88%);
   --border-color: hsl(0, 0%, 25%);
+  --steps-bg-color: hsl(0, 0%, 35%);
 }
