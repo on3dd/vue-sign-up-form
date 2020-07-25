@@ -1,0 +1,22 @@
+@mixin input {
+  height: 40px;
+  width: inherit;
+  padding: 0.375rem 0.75rem;
+  color: var(--font-color);
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--input-bg-color);
+
+  &::placeholder {
+    color: var(--font-color-secondary);
+  }
+
+  &:hover {
+    background-color: var(--input-bg-color-hover);
+  }
+
+  &:focus {
+    background-color: var(--input-bg-color-focus);
+  }
+}
