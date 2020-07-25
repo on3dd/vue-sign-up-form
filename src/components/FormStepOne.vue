@@ -6,6 +6,7 @@
         id="second-name"
         label="Фамилия *"
         placeholder="Введите фамилию.."
+        autocomplete="given-name"
         required
       />
       <BaseInput
@@ -13,6 +14,7 @@
         id="first-name"
         label="Имя *"
         placeholder="Введите имя.."
+        autocomplete="family-name"
         required
       />
     </BaseFormSection>
@@ -23,6 +25,7 @@
         id="patronymic"
         label="Отчество"
         placeholder="Введите отчество.."
+        autocomplete="additional-name"
       />
     </BaseFormSection>
 

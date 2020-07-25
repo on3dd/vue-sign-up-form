@@ -6,6 +6,7 @@
         id="birth-date"
         label="Дата рождения *"
         placeholder="Введите дату рождения.."
+        autocomplete="bday"
         required
       />
     </BaseFormSection>
@@ -17,6 +18,7 @@
         type="numeric"
         label="Номер телефона *"
         placeholder="Введите номер телефона.."
+        autocomplete="tel"
         required
       />
     </BaseFormSection>

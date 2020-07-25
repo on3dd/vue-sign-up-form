@@ -65,6 +65,10 @@
 		background-color: var(--bg-color);
 		border-color: var(--steps-color);
 		box-shadow: 0px 2px 2px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .step.active .step__title {
+    font-weight: 700;
 	}
 
 	.step.previous .step__idx {

@@ -8,6 +8,7 @@
         :placeholder="placeholder"
         :value="value"
         :required="required"
+        :autocomplete="autocomplete"
         class="input"
         ref="input"
         @input="handleInput"
@@ -50,6 +51,11 @@
 			value: {
 				type: String,
 				default: '',
+			},
+			autocomplete: {
+				type: String,
+				required: false,
+				default: 'on',
 			},
 		},
 		methods: {

@@ -1,8 +1,10 @@
 <template>
   <div id="app">
     <BaseForm :options="options" @next="handleFormNext">
-      <FormStepOne v-show="options.steps.current === 0" />
-      <FormStepTwo v-show="options.steps.current === 1" />
+      <FormStepOne v-if="options.steps.current === 0" />
+      <FormStepTwo v-else-if="options.steps.current === 1" />
+      <FormStepThree v-else-if="options.steps.current === 2" />
+      <FormStepFour v-else-if="options.steps.current === 3" />
     </BaseForm>
   </div>
 </template>
@@ -11,6 +13,8 @@
 	import BaseForm from '@/components/BaseUI/BaseForm';
 	import FormStepOne from '@/components/FormStepOne';
 	import FormStepTwo from '@/components/FormStepTwo';
+	import FormStepThree from '@/components/FormStepThree';
+	import FormStepFour from '@/components/FormStepFour';
 
 	export default {
 		name: 'App',
@@ -18,6 +22,8 @@
 			BaseForm,
 			FormStepOne,
 			FormStepTwo,
+			FormStepThree,
+			FormStepFour,
 		},
 
 		data: () => ({
