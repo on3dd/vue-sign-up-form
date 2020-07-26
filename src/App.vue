@@ -8,11 +8,14 @@
         @invalid-change="handleInvalidChange"
       />
     </BaseForm>
+
+    <BaseMessage ref="message" title="Успех" color="primary">Клиент успешно добавлен!</BaseMessage>
   </div>
 </template>
 
 <script>
 	import BaseForm from '@/components/BaseUI/BaseForm';
+	import BaseMessage from '@/components/BaseUI/BaseMessage';
 	import FormStepOne from '@/components/FormStepOne';
 	import FormStepTwo from '@/components/FormStepTwo';
 	import FormStepThree from '@/components/FormStepThree';
@@ -22,6 +25,7 @@
 		name: 'App',
 		components: {
 			BaseForm,
+			BaseMessage,
 			FormStepOne,
 			FormStepTwo,
 			FormStepThree,
@@ -32,7 +36,7 @@
 			options: {
 				steps: {
 					items: ['Основное', 'Подробности', 'Адрес', 'Паспорт'],
-					current: 3,
+					current: 0,
 				},
 				heading: {
 					title: 'Создание клиента',
@@ -82,9 +86,10 @@
 			handleFormSubmit() {
 				if (this.invalid) {
 					return this.$refs.child.touch();
-        }
+				}
 
 				console.log('form submitted');
+				this.$refs.message.show();
 			},
 		},
 	};

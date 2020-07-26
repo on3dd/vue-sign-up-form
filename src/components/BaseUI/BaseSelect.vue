@@ -142,6 +142,10 @@
 		height: 40px;
 		line-height: calc(40px - 1em);
 
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+
 		&.active {
 			border-radius: 5px 5px 0 0;
 		}
@@ -169,6 +173,7 @@
 		overflow-y: auto;
 		overflow-x: hidden;
 		border-radius: 0 0 5px 5px;
+		background-color: var(--bg-color);
 		box-shadow: 0px 2px 2px 0 rgba(0, 0, 0, 0.25);
 
 		&.active {
@@ -179,10 +184,9 @@
 	.select__item {
 		@include input;
 
-		height: 40px;
+		height: 100%;
 		width: inherit;
 		padding: 0.375rem 0.75rem;
-		line-height: calc(40px - 1em);
 		background-color: var(--bg-color);
 		border-radius: 0;
 		border: none;
