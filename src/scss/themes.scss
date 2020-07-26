@@ -4,18 +4,22 @@
   --font-color: hsl(0, 0%, 21%);
   --font-color-secondary: hsl(0, 0%, 48%);
   --font-color-alternative: hsl(0, 0%, 96%);
+  --font-color-invalid: hsl(6, 78%, 37%);
   --bg-color: hsl(0, 0%, 100%);
   --bg-color-secondary: hsl(0, 0%, 90%);
   --link-bg-color-hover: hsl(0, 0%, 98%);
   --input-bg-color: hsl(0, 0%, 96%);
   --input-bg-color-hover: hsl(0, 0%, 94%);
   --input-bg-color-focus: hsl(0, 0%, 92%);
+  --input-bg-color-invalid: hsl(6, 78%, 92%);
+  --input-bg-color-invalid-hover: hsl(6, 78%, 90%);
+  --input-bg-color-invalid-focus: hsl(6, 78%, 88%);
   --heading-color: hsl(0, 0%, 4%);
   --sub-heading-color: hsl(0, 0%, 29%);
   --border-color: hsl(0, 0%, 75%);
-  --steps-color: hsl(282, 44%, 47%);
+  --steps-color: hsl(145, 63%, 49%);
   --steps-bg-color: hsl(0, 0%, 65%);
-  --body-color: hsl(145, 63%, 42%);
+  --body-color: hsl(0, 0%, 90%);
 }
 
 [data-theme='dark'] {
@@ -34,4 +38,5 @@
   --sub-heading-color: hsl(0, 0%, 88%);
   --border-color: hsl(0, 0%, 25%);
   --steps-bg-color: hsl(0, 0%, 35%);
+  --body-color: hsl(240, 25%, 12%);
 }

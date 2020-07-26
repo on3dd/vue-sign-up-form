@@ -1,10 +1,12 @@
 <template>
   <div id="app">
-    <BaseForm :options="options" @next="handleFormNext">
-      <FormStepOne v-if="options.steps.current === 0" />
-      <FormStepTwo v-else-if="options.steps.current === 1" />
-      <FormStepThree v-else-if="options.steps.current === 2" />
-      <FormStepFour v-else-if="options.steps.current === 3" />
+    <BaseForm :options="options" @next-page="handleFormNextPage" @submit="handleFormSubmit">
+      <component
+        ref="child"
+        :is="currentComponent"
+        :invalid="invalid"
+        @invalid-change="handleInvalidChange"
+      />
     </BaseForm>
   </div>
 </template>
@@ -30,17 +32,42 @@
 			options: {
 				steps: {
 					items: ['Основное', 'Подробности', 'Адрес', 'Паспорт'],
-					current: 0,
+					current: 3,
 				},
 				heading: {
 					title: 'Создание клиента',
 					description: 'Заполните данную форму, чтобы создать нового клиента!',
 				},
 			},
+			invalid: true,
 		}),
 
+		computed: {
+			currentComponent() {
+				switch (this.options.steps.current) {
+					case 0:
+						return FormStepOne;
+					case 1:
+						return FormStepTwo;
+					case 2:
+						return FormStepThree;
+					default:
+						return FormStepFour;
+				}
+			},
+		},
+
 		methods: {
-			handleFormNext() {
+			handleInvalidChange(val) {
+				console.log(this.invalid, val);
+				this.invalid = val;
+			},
+
+			handleFormNextPage() {
+				if (this.invalid) {
+					return this.$refs.child.touch();
+				}
+
 				this.options = {
 					heading: this.options.heading,
 					steps: {
@@ -48,6 +75,16 @@
 						current: this.options.steps.current + 1,
 					},
 				};
+
+				this.invalid = true;
+			},
+
+			handleFormSubmit() {
+				if (this.invalid) {
+					return this.$refs.child.touch();
+        }
+
+				console.log('form submitted');
 			},
 		},
 	};

@@ -53,9 +53,15 @@
 
 		methods: {
 			handleSubmitButtonClick() {
-				this.isCurrentExualToMax
-					? console.log('form submitted')
-					: this.$emit('next');
+				this.isCurrentExualToMax ? this.handleSubmit() : this.handleNext();
+			},
+
+			handleSubmit() {
+        this.$emit('submit');
+			},
+
+			handleNext() {
+				this.$emit('next-page');
 			},
 		},
 	};
@@ -85,9 +91,9 @@
 	.form__button {
 		min-width: 140px;
 		padding: 0.5rem 1rem;
-		color: var(--font-color-alternative);
+		color: var(--heading-color);
 		font-size: 1rem;
-		font-weight: 700;
+		font-weight: 600;
 		line-height: 1.5rem;
 		text-align: center;
 		vertical-align: middle;

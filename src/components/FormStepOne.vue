@@ -7,7 +7,8 @@
         label="Фамилия *"
         placeholder="Введите фамилию.."
         autocomplete="given-name"
-        required
+        :class="{invalid: $v.secondName.$dirty && !$v.secondName.required}"
+        @input="validate('secondName')"
       />
       <BaseInput
         v-model="firstName"
@@ -15,7 +16,8 @@
         label="Имя *"
         placeholder="Введите имя.."
         autocomplete="family-name"
-        required
+        :class="{invalid: $v.firstName.$dirty && !$v.firstName.required}"
+        @input="validate('firstName')"
       />
     </BaseFormSection>
 
@@ -43,23 +45,36 @@
 </template>
 
 <script>
+	import { required } from 'vuelidate/lib/validators';
 	import BaseFormSection from '@/components/BaseUI/BaseForm/Section';
 	import BaseInput from '@/components/BaseUI/BaseInput';
 	import BaseInputRadio from '@/components/BaseUI/BaseInputRadio';
+	import formStep from '@/mixins/formStep.js';
 
 	export default {
-		name: 'FormStepOne',
+    name: 'FormStepOne',
+    mixins: [formStep],
 		components: {
 			BaseFormSection,
 			BaseInput,
 			BaseInputRadio,
 		},
+
 		data: () => ({
-			firstName: '',
 			secondName: '',
+			firstName: '',
 			patronymic: '',
 			gender: '',
 		}),
+
+		validations: {
+			secondName: {
+				required,
+			},
+			firstName: {
+				required,
+			},
+		},
 	};
 </script>
 

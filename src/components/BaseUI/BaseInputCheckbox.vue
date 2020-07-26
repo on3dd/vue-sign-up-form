@@ -1,6 +1,6 @@
 <template>
-  <label class="checkbox-wrapper" @click="handleClick">
-    <input type="checkbox" class="checkbox" :checked="checked" />
+  <label class="checkbox-wrapper">
+    <input type="checkbox" class="checkbox" v-model="checked" />
     <span class="checkmark" />
 
     <span v-if="label" class="text">{{label}}</span>
@@ -11,19 +11,33 @@
 	export default {
 		name: 'BaseInputCheckbox',
 		model: {
-			prop: 'checked',
+			prop: 'modelValue',
 			event: 'input',
 		},
+
 		props: {
 			label: {
 				type: String,
 				requied: true,
 			},
-			checked: {
+			modelValue: {
 				type: Boolean,
 				default: false,
 			},
 		},
+
+		computed: {
+			checked: {
+				get() {
+					return this.modelValue;
+				},
+
+				set(val) {
+					this.$emit('input', val);
+				},
+			},
+		},
+
 		methods: {
 			handleClick() {
 				this.$emit('input', this.checked);
@@ -41,21 +55,15 @@
 	}
 
 	.checkbox {
-    position: absolute;
-    margin: 0;
-		/* opacity: 0; */
-		/* height: 0;
-    width: 0; */
-    height: 22px;
+		position: absolute;
+		margin: 0;
+		height: 22px;
 		width: 22px;
 	}
 
 	.checkmark {
 		display: block;
 		position: relative;
-		// position: absolute;
-		// top: 0;
-		// left: 0;
 		height: 22px;
 		width: 22px;
 		background-color: #ffffff;

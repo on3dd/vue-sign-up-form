@@ -84,9 +84,26 @@
 		display: block;
 		font-weight: 500;
 		margin-bottom: 0.5rem;
+		transition: color 0.1s ease-out;
 	}
 
 	.input {
 		@include input;
+	}
+
+	.input-wrapper.invalid .input-label {
+		color: var(--font-color-invalid);
+	}
+
+	.input-wrapper.invalid .input {
+		background-color: var(--input-bg-color-invalid);
+
+		&:hover {
+			background-color: var(--input-bg-color-invalid-hover);
+		}
+
+		&:focus {
+			background-color: var(--input-bg-color-invalid-focus);
+		}
 	}
 </style>

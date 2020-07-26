@@ -28,6 +28,10 @@
 		margin-bottom: 1rem;
 	}
 
+	.section.invalid .section__heading {
+		color: var(--font-color-invalid);
+	}
+
 	.section__row {
 		@media screen and (min-width: $tablet-min-width) {
 			display: flex;
@@ -53,6 +57,7 @@
 		display: block;
 		font-weight: 500;
 		margin-bottom: 0.5rem;
+		transition: color 0.1s ease-out;
 	}
 
 	.section__row > ul {

@@ -1,9 +1,14 @@
 <template>
   <div class="select-wrapper">
     <div class="select">
-      <div @click="handleCurrentClick" ref="current" class="select__current">
+      <div ref="current" :class="currentClasses" @click="handleCurrentClick">
         {{value}}
-        <img src="@/assets/images/icons/arrow.svg" alt="Arrow icon" class="select__icon" />
+        <img
+          src="@/assets/images/icons/arrow.svg"
+          alt="Arrow icon"
+          class="select__icon"
+          ref="icon"
+        />
       </div>
       <div :class="listClasses">
         <div
@@ -36,6 +41,11 @@
 				required: false,
 				default: false,
 			},
+			placeholder: {
+				type: String,
+				required: false,
+				default: '',
+			},
 			modelValue: {
 				type: String,
 				default: '',
@@ -48,19 +58,23 @@
 		}),
 
 		created() {
-			if (this.empty) {
-				this.value = '';
-			} else if (this.modelValue) {
+			if (this.modelValue) {
 				this.value = this.modelValue;
-			} else if (this.options.length !== 0) {
+			} else if (this.empty) {
+				this.value = this.placeholder;
+			} else if (this.options.length) {
 				this.value = this.options[0];
 			}
 		},
 
 		mounted() {
 			document.addEventListener('click', (evt) => {
-				if (this.isActive && evt.target !== this.$refs.current) {
-					this.isActive = false;
+				if (
+					this.isActive &&
+					evt.target !== this.$refs.current &&
+					evt.target !== this.$refs.icon
+				) {
+					this.handleCurrentClick();
 				}
 			});
 		},
@@ -72,6 +86,13 @@
 		},
 
 		computed: {
+			currentClasses() {
+				return {
+					select__current: true,
+					placeholder: !this.options.includes(this.value),
+				};
+			},
+
 			listClasses() {
 				return {
 					select__items: true,
@@ -115,13 +136,18 @@
 	.select__current {
 		@include input;
 
+		display: flex;
+		align-items: center;
 		position: relative;
 		height: 40px;
 		line-height: calc(40px - 1em);
-		vertical-align: top;
 
 		&.active {
 			border-radius: 5px 5px 0 0;
+		}
+
+		&.placeholder {
+			color: var(--font-color-secondary);
 		}
 	}
 
@@ -168,6 +194,19 @@
 
 		&.current {
 			color: var(--font-color);
+		}
+	}
+
+	.select-wrapper.invalid .select__current {
+		/* color: var(--font-color-invalid); */
+		background-color: var(--input-bg-color-invalid);
+
+		&:hover {
+			background-color: var(--input-bg-color-invalid-hover);
+		}
+
+		&:focus {
+			background-color: var(--input-bg-color-invalid-focus);
 		}
 	}
 </style>

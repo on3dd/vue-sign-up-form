@@ -1,7 +1,17 @@
 <template>
   <section>
-    <BaseFormSection heading="Лечащий врач">
-      <BaseSelect v-model="document" :options="documents" />
+    <BaseFormSection
+      heading="Тип документа"
+      :class="{invalid: $v.document.$dirty && !$v.document.required}"
+    >
+      <BaseSelect
+        v-model="document"
+        :options="documents"
+        empty
+        placeholder="Выберите тип документа.."
+        :class="{invalid: $v.document.$dirty && !$v.document.required}"
+        @select="validate('document')"
+      />
     </BaseFormSection>
 
     <BaseFormSection>
@@ -41,18 +51,23 @@
         id="issue-date"
         label="Дата выдачи *"
         placeholder="Введите дату выдачи документа.."
+        :class="{invalid: $v.issueDate.$dirty && !$v.issueDate.required}"
+        @input="validate('issueDate')"
       />
     </BaseFormSection>
   </section>
 </template>
 
 <script>
+	import { required } from 'vuelidate/lib/validators';
 	import BaseFormSection from '@/components/BaseUI/BaseForm/Section';
 	import BaseInput from '@/components/BaseUI/BaseInput';
 	import BaseSelect from '@/components/BaseUI/BaseSelect';
+	import formStep from '@/mixins/formStep.js';
 
 	export default {
 		name: 'FormStepTwo',
+		mixins: [formStep],
 		components: {
 			BaseFormSection,
 			BaseInput,
@@ -71,6 +86,16 @@
 			],
 			document: '',
 		}),
+
+		validations: {
+			document: {
+				required,
+			},
+
+			issueDate: {
+				required,
+			},
+		},
 
 		computed: {
 			phoneNumber: {
