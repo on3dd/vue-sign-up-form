@@ -1,4 +1,6 @@
 # vue-sign-up-form
+## Only allowed stack: 
+- Vue.js
 
 ## Project setup
 ```
