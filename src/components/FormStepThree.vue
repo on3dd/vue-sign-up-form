@@ -7,17 +7,27 @@
         label="Индекс"
         placeholder="Введите почтовый индекс.."
       />
-      <BaseInput v-model="country" id="country" label="Страна" placeholder="Введите страну.." />
+      <BaseInput
+        v-model="country"
+        id="country"
+        label="Страна"
+        placeholder="Введите страну.."
+      />
     </BaseFormSection>
 
     <BaseFormSection>
-      <BaseInput v-model="area" id="area" label="Область" placeholder="Введите область.." />
+      <BaseInput
+        v-model="area"
+        id="area"
+        label="Область"
+        placeholder="Введите область.."
+      />
       <BaseInput
         v-model="city"
         id="city"
         label="Город *"
         placeholder="Введите город.."
-        :class="{invalid: $v.city.$dirty && !$v.city.required}"
+        :invalid="$v.city.$dirty && !$v.city.required"
         @input="validate('city')"
       />
     </BaseFormSection>

@@ -72,8 +72,11 @@
 		opacity: 0;
 		transition: all 0.5s ease-out;
 
+		@media screen and (max-width: $smartphone-max-width) {
+			top: 5%;
+		}
+
 		&.active {
-			/* display: block; */
 			opacity: 1;
 			right: 2.5%;
 

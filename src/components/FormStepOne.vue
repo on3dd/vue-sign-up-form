@@ -7,7 +7,7 @@
         label="Фамилия *"
         placeholder="Введите фамилию.."
         autocomplete="given-name"
-        :class="{invalid: $v.secondName.$dirty && !$v.secondName.required}"
+        :invalid="$v.secondName.$dirty && !$v.secondName.required"
         @input="validate('secondName')"
       />
       <BaseInput
@@ -16,7 +16,7 @@
         label="Имя *"
         placeholder="Введите имя.."
         autocomplete="family-name"
-        :class="{invalid: $v.firstName.$dirty && !$v.firstName.required}"
+        :invalid="$v.firstName.$dirty && !$v.firstName.required"
         @input="validate('firstName')"
       />
     </BaseFormSection>

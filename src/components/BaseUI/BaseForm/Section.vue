@@ -25,7 +25,12 @@
 	@import '../../../scss/breakpoints';
 
 	.section {
-		margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+
+    @media screen and (min-width: $tablet-min-width) {
+			display: flex;
+			flex-wrap: nowrap;
+		}
 	}
 
 	.section.invalid .section__heading {
@@ -40,7 +45,7 @@
 	}
 
 	.section__row > div {
-		margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 
 		@media screen and (min-width: $tablet-min-width) {
 			display: flex;
@@ -60,13 +65,23 @@
 		transition: color 0.1s ease-out;
 	}
 
-	.section__row > ul {
+	.section__row ul {
 		margin: 0;
 		padding-left: 1rem;
 		list-style: none;
 	}
 
-	.section__row > ul > li {
+	.section__row ul > li {
 		line-height: 2rem;
+	}
+</style>
+
+<style lang="scss">
+	.errors {
+		position: absolute;
+		top: calc(100% + 0.4rem);
+		display: block;
+		color: var(--font-color-invalid);
+		font-size: 0.8rem;
 	}
 </style>

@@ -7,7 +7,7 @@
         label="Дата рождения *"
         placeholder="Введите дату рождения.."
         autocomplete="bday"
-        :class="{invalid: $v.birthDate.$dirty && !$v.birthDate.required}"
+        :invalid="$v.birthDate.$dirty && !$v.birthDate.required"
         @input="validate('birthDate')"
       />
     </BaseFormSection>

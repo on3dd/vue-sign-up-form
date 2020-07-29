@@ -1,5 +1,5 @@
 <template>
-  <div class="input-wrapper">
+  <div :class="{'input-wrapper': true, 'invalid': invalid}">
     <label class="input-label" :for="id">
       <span class="input-label__text" v-if="label">{{label}}</span>
       <input
@@ -11,6 +11,7 @@
         class="input"
       />
     </label>
+    <span v-if="invalid" class="errors">Поле должно быть заполнено</span>
   </div>
 </template>
 
@@ -54,8 +55,12 @@
 				required: false,
 				default: 'on',
 			},
+			invalid: {
+				type: Boolean,
+				required: false,
+				default: false,
+			},
 		},
-		validations: {},
 		computed: {
 			value: {
 				get() {
@@ -74,6 +79,7 @@
 	@import '../../scss/input';
 
 	.input-wrapper {
+		position: relative;
 		height: 100%;
 		width: inherit;
 	}

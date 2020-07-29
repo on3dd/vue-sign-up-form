@@ -51,7 +51,7 @@
         id="issue-date"
         label="Дата выдачи *"
         placeholder="Введите дату выдачи документа.."
-        :class="{invalid: $v.issueDate.$dirty && !$v.issueDate.required}"
+        :invalid="$v.issueDate.$dirty && !$v.issueDate.required"
         @input="validate('issueDate')"
       />
     </BaseFormSection>
