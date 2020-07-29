@@ -26,11 +26,6 @@
 
 	.section {
     margin-bottom: 1.5rem;
-
-    @media screen and (min-width: $tablet-min-width) {
-			display: flex;
-			flex-wrap: nowrap;
-		}
 	}
 
 	.section.invalid .section__heading {
