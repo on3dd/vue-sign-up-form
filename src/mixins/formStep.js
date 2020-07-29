@@ -8,10 +8,6 @@ const formStep = {
 
   methods: {
     validate(prop) {
-      // console.log('prop', prop);
-      // console.log('$v', this.$v);
-      // console.log('$v[prop]', this.$v[prop]);
-
       this.$v[prop].$touch();
 
       const invalid = this.$v.$invalid;

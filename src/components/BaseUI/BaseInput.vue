@@ -3,15 +3,12 @@
     <label class="input-label" :for="id">
       <span class="input-label__text" v-if="label">{{label}}</span>
       <input
+        v-model="value"
         :id="id"
         :type="type"
         :placeholder="placeholder"
-        :value="value"
-        :required="required"
         :autocomplete="autocomplete"
         class="input"
-        ref="input"
-        @input="handleInput"
       />
     </label>
   </div>
@@ -21,7 +18,7 @@
 	export default {
 		name: 'BaseInput',
 		model: {
-			prop: 'value',
+			prop: 'modelValue',
 			event: 'input',
 		},
 		props: {
@@ -48,7 +45,7 @@
 				required: false,
 				default: false,
 			},
-			value: {
+			modelValue: {
 				type: String,
 				default: '',
 			},
@@ -58,9 +55,16 @@
 				default: 'on',
 			},
 		},
-		methods: {
-			handleInput() {
-				this.$emit('input', this.$refs.input.value);
+		validations: {},
+		computed: {
+			value: {
+				get() {
+					return this.modelValue;
+				},
+
+				set(val) {
+					this.$emit('input', val);
+				},
 			},
 		},
 	};

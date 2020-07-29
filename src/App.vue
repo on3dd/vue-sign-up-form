@@ -63,7 +63,6 @@
 
 		methods: {
 			handleInvalidChange(val) {
-				console.log(this.invalid, val);
 				this.invalid = val;
 			},
 
@@ -88,7 +87,6 @@
 					return this.$refs.child.touch();
 				}
 
-				console.log('form submitted');
 				this.$refs.message.show();
 			},
 		},

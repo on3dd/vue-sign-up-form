@@ -1,7 +1,7 @@
 <template>
   <div class="message" ref="message">
     <div :class="headClasses">
-      <h5 class="message__title">{{title}}</h5>
+      <span class="message__title">{{title}}</span>
       <button class="message__close" @click="handleButtonClick">
         <img src="@/assets/images/icons/cross.svg" alt="Cross icon" />
       </button>
@@ -60,6 +60,7 @@
 	@import '../../scss/breakpoints.scss';
 
 	.message {
+		/* display: none; */
 		position: fixed;
 		top: 10%;
 		right: calc(-100% + 15px * 2 - 50px);
@@ -68,9 +69,12 @@
 		border-radius: 5px;
 		background-color: var(--bg-color);
 		box-shadow: 0px 2px 2px 0 rgba(0, 0, 0, 0.25);
-		transition: right 0.5s ease-out;
+		opacity: 0;
+		transition: all 0.5s ease-out;
 
 		&.active {
+			/* display: block; */
+			opacity: 1;
 			right: 2.5%;
 
 			@media screen and (max-width: $smartphone-max-width) {
